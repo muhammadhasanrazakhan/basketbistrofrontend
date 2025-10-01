@@ -25,6 +25,7 @@ import {
 } from "../constants/offerConstants";
   
 import axios from "axios";
+import API from "../api";
 
 // Create Offer
 export const createOffer = (offer) => async (dispatch) => {
@@ -36,7 +37,7 @@ export const createOffer = (offer) => async (dispatch) => {
         "Content-Type": "application/json",
     },
     };
-    const { data } = await axios.post("/api/bb/offer/new", offer, config);
+    const { data } = await API.post("/api/bb/offer/new", offer, config);
 
     dispatch({ type: CREATE_OFFER_SUCCESS, payload: data });
 
@@ -53,7 +54,7 @@ export const getAllOffers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_OFFERS_REQUEST });
 
-    const { data } = await axios.get("/api/bb/offers");
+    const { data } = await API.get("/api/bb/offers");
 
     dispatch({ type: ALL_OFFERS_SUCCESS, payload: data });
   } catch (error) {
@@ -69,7 +70,7 @@ export const getAllOffers = () => async (dispatch) => {
     try {
       dispatch({ type: OFFER_DETAILS_REQUEST });
   
-      const { data } = await axios.get(`/api/bb/admin/offer/${id}`);
+      const { data } = await API.get(`/api/bb/admin/offer/${id}`);
   
       dispatch({ type: OFFER_DETAILS_SUCCESS, payload: data.offer });
     } catch (error) {
@@ -90,7 +91,7 @@ export const updateOffer = (id, offerData) => async (dispatch) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded"}
     };
 
-    const { data } = await axios.put(
+    const { data } = await API.put(
       `/api/bb/admin/offer/${id}`,
       offerData,
       config
@@ -113,7 +114,7 @@ export const updateOffer = (id, offerData) => async (dispatch) => {
     try {
       dispatch({ type: DELETE_OFFER_REQUEST });
   
-      const { data } = await axios.delete(`/api/bb/admin/offer/${id}`);
+      const { data } = await API.delete(`/api/bb/admin/offer/${id}`);
   
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: data.success });
     } catch (error) {
@@ -131,7 +132,7 @@ export const updateOffer = (id, offerData) => async (dispatch) => {
       const config = {
         headers: {"Content-Type": "application/x-www-form-urlencoded"}
       };
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/offer/changeactivation/${id}`,
         user,
         config
@@ -156,7 +157,7 @@ export const updateOffer = (id, offerData) => async (dispatch) => {
         const config = {
           headers: {"Content-Type": "application/x-www-form-urlencoded"}
         };
-        const { data } = await axios.put(
+        const { data } = await API.put(
           `/api/bb/admin/offer/dismiss/${id}`,
           user,
           config

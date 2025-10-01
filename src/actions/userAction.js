@@ -40,6 +40,7 @@ import {
     CLEAR_ERRORS,
   } from "../constants/userConstants";
   import axios from "axios";
+  import API from "../api";
   
   // Login
   export const login = (email, password) => async (dispatch) => {
@@ -48,7 +49,7 @@ import {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.post(
+      const { data } = await API.post(
         `/api/bb/login`,
         { email, password },
         config
@@ -68,7 +69,7 @@ import {
       //const config = { headers: { "Content-Type": "multipart/form-data" } };
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.post(`/api/bb/register`, {name, email, password} , config);
+      const { data } = await API.post(`/api/bb/register`, {name, email, password} , config);
   
       dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
     } catch (error) {
@@ -84,7 +85,7 @@ import {
     try {
       dispatch({ type: LOAD_USER_REQUEST });
   
-      const { data } = await axios.get(`/api/bb/me`);
+      const { data } = await API.get(`/api/bb/me`);
   
       dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
     } catch (error) {
@@ -95,7 +96,7 @@ import {
   // Logout User
   export const logout = () => async (dispatch) => {
     try {
-      await axios.get(`/api/bb/logout`);
+      await API.get(`/api/bb/logout`);
   
       dispatch({ type: LOGOUT_SUCCESS });
     } catch (error) {
@@ -110,7 +111,7 @@ import {
   
       const config = { headers: { "Content-Type": "multipart/form-data" } };
   
-      const { data } = await axios.put(`/api/bb/me/update`, userData, config);
+      const { data } = await API.put(`/api/bb/me/update`, userData, config);
   
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
     } catch (error) {
@@ -128,7 +129,7 @@ import {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/password/update`,
         passwords,
         config
@@ -150,7 +151,7 @@ import {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.post(`/api/bb/password/forgot`, email, config);
+      const { data } = await API.post(`/api/bb/password/forgot`, email, config);
   
       dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
     } catch (error) {
@@ -168,7 +169,7 @@ import {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/password/reset/${token}`,
         passwords,
         config
@@ -187,7 +188,7 @@ import {
   export const getAllUsers = () => async (dispatch) => {
     try {
       dispatch({ type: ALL_USERS_REQUEST });
-      const { data } = await axios.get(`/api/bb/admin/users`);
+      const { data } = await API.get(`/api/bb/admin/users`);
   
       dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
     } catch (error) {
@@ -199,7 +200,7 @@ import {
   export const getUserDetails = (id) => async (dispatch) => {
     try {
       dispatch({ type: USER_DETAILS_REQUEST });
-      const { data } = await axios.get(`/api/bb/admin/user/${id}`);
+      const { data } = await API.get(`/api/bb/admin/user/${id}`);
   
       dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
     } catch (error) {
@@ -214,7 +215,7 @@ import {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/admin/user/${id}`,
         userData,
         config
@@ -234,7 +235,7 @@ import {
     try {
       dispatch({ type: DELETE_USER_REQUEST });
   
-      const { data } = await axios.delete(`/api/bb/admin/user/${id}`);
+      const { data } = await API.delete(`/api/bb/admin/user/${id}`);
   
       dispatch({ type: DELETE_USER_SUCCESS, payload: data });
     } catch (error) {
@@ -254,7 +255,7 @@ export const newUserReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(`/api/bb/userreview`, reviewData, config);
+    const { data } = await API.put(`/api/bb/userreview`, reviewData, config);
 
     dispatch({
       type: NEW_USER_REVIEW_SUCCESS,

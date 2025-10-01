@@ -26,7 +26,8 @@ import {
   } from "../constants/orderConstants";
   
   import axios from "axios";
-  
+  import API from "../api";
+
   // Create Order
   export const createOrder = (order) => async (dispatch) => {
     try {
@@ -37,7 +38,7 @@ import {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post("/api/bb/order/new", order, config);
+      const { data } = await API.post("/api/bb/order/new", order, config);
   
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
       if (order?.orderItems?.length !== 0) {
@@ -59,7 +60,7 @@ import {
     try {
       dispatch({ type: MY_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/bb/orders/me");
+      const { data } = await API.get("/api/bb/orders/me");
   
       dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -75,7 +76,7 @@ import {
     try {
       dispatch({ type: ALL_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/bb/admin/orders");
+      const { data } = await API.get("/api/bb/admin/orders");
   
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -96,7 +97,7 @@ import {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/admin/order/${id}`,
         order,
         config
@@ -122,7 +123,7 @@ import {
           // "Content-Type": "application/x-www-form-urlencoded" ,
         },
       };
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/bb/admin/orderpayment/${id}`,
         order,
         config
@@ -142,7 +143,7 @@ import {
     try {
       dispatch({ type: DELETE_ORDER_REQUEST });
   
-      const { data } = await axios.delete(`/api/bb/admin/order/${id}`);
+      const { data } = await API.delete(`/api/bb/admin/order/${id}`);
   
       dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
     } catch (error) {
@@ -158,7 +159,7 @@ import {
     try {
       dispatch({ type: ORDER_DETAILS_REQUEST });
   
-      const { data } = await axios.get(`/api/bb/order/${id}`);
+      const { data } = await API.get(`/api/bb/order/${id}`);
   
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
     } catch (error) {
