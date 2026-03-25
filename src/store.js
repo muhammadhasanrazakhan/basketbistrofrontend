@@ -37,7 +37,15 @@ import {
   newOfferReducer,
   offerDetailsReducer,
   offerReducer,
+  adminStoreOffersReducer,
 } from "./reducers/offerReducer";
+
+import {
+  storesReducer,
+  storeDetailsReducer,
+  newStoreReducer,
+  storeReducer,
+} from "./reducers/storeReducer";
 
 const reducer = combineReducers({
   products: productsReducer,
@@ -61,6 +69,11 @@ const reducer = combineReducers({
   allOffers: allOffersReducer,
   offer: offerReducer,
   offerDetails: offerDetailsReducer,
+  stores: storesReducer,
+  storeDetails: storeDetailsReducer,
+  newStore: newStoreReducer,
+  store: storeReducer,
+  adminStoreOffers: adminStoreOffersReducer,
   // productReviews: productReviewsReducer,
   // review: reviewReducer,
 });

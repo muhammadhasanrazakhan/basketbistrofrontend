@@ -7,7 +7,7 @@
 
 .mainHeading {
   text-align: center;
-  margin-top: 40px;  
+  margin-top: 40px;
 }
 
 .offerBox {
@@ -16,7 +16,7 @@
   max-height: max-content;
   object-fit: cover;
   /* background-color: antiquewhite; */
-  background: linear-gradient(to right, #FFFCEE, #FFF9D9);
+  background: linear-gradient(to right, #FFFCEE, #ccffd3);
   padding: 10px;
   border-radius: 4px;
 }
@@ -40,7 +40,8 @@
 .offerImage span {
   font-size: 20px;
   font-weight: bold;
-  color: #ff5722; /* Fallback color for older browsers */
+  color: #ff5722;
+  /* Fallback color for older browsers */
   background: -webkit-linear-gradient(45deg, #f44336, #9c27b0, #3f51b5, #03a9f4, #8bc34a, #f44336);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -131,10 +132,10 @@
 .inactiveofferButton {
   width: 60%;
   height: 45px;
-  border-width: 1px; 
+  border-width: 1px;
   border-radius: 10px;
   border-style: dashed;
-  background-color: #EAFFE4;
+  background-color: #83cc6f;
   border-color: green;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -145,7 +146,7 @@
 .activeofferButton {
   width: 60%;
   height: 45px;
-  border-width: 1px; 
+  border-width: 1px;
   border-radius: 10px;
   border-style: dashed;
   background-color: #E0AD99;
@@ -182,7 +183,7 @@
     max-width: 25%;
     height: 115px;
   }
-  
+
   .offerImage span {
     font-size: 17px;
   }
@@ -202,7 +203,7 @@
     line-height: 14px;
     margin-bottom: 16px;
   }
-} 
+}
 
 @media only screen and (max-width: 991px) {
   #offer__container {
@@ -220,7 +221,7 @@
     max-width: 25%;
     height: 100px;
   }
-  
+
   .offerImage span {
     font-size: 14px;
   }
@@ -230,18 +231,18 @@
     width: 28%;
     height: 100px;
   }
-  
+
   .offerContent {
     margin-top: 15px;
     margin-bottom: 0px;
     margin-left: 6px;
   }
-  
+
   .offerBox h4 {
     font-size: 22px;
     line-height: 15px;
   }
-  
+
   .inactivestatusBoxText {
     font-size: 12px;
     line-height: 12px;
@@ -265,7 +266,7 @@
     margin-bottom: 8px;
     text-align: center;
   }
-  
+
   .inactiveofferButton {
     height: 40px;
   }
@@ -278,7 +279,7 @@
 @media only screen and (max-width: 767px) {
   #offer__container {
     margin: 20px auto;
-    display: flex;    
+    display: flex;
     flex-direction: column;
   }
 
@@ -287,7 +288,7 @@
     max-width: 25%;
     height: 110px;
   }
-  
+
   .offerImage span {
     font-size: 16px;
   }
@@ -305,7 +306,7 @@
   .offerBox h4 {
     font-size: 24px;
   }
-  
+
   .inactivestatusBoxText {
     font-size: 13px;
     line-height: 13px;
@@ -344,13 +345,13 @@
     margin-top: 20px;
     margin-left: 0px;
   }
-  
+
   .offerBox h4 {
     font-size: 23px;
     line-height: 18px;
     text-align: center;
   }
-  
+
   .inactivestatusBoxText {
     font-size: 13px;
     line-height: 13px;
@@ -370,7 +371,7 @@
     line-height: 15px;
     text-align: center;
   }
-}  
+}
 
 @media only screen and (max-width: 330px) {
   .offerBox img {
@@ -378,4 +379,4 @@
     height: 85px;
     align-self: center;
   }
-}  
+}

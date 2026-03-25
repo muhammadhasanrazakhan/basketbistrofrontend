@@ -1,4 +1,4 @@
-import { faChevronDown, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faClipboardList, faMap, faStore } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Col, Container, Offcanvas, Row } from 'react-bootstrap';
@@ -76,7 +76,7 @@ const TopNavigation = () => {
 
   let totalPrice = 0;
   for (const pd of cartItems) {
-    totalPrice = totalPrice + (Number(pd.price) *  Number(pd.quantity))
+    totalPrice = totalPrice + (Number(pd.price) * Number(pd.quantity))
   }
   // for (const pd of cart) {
   //   totalPrice = totalPrice + Number(pd.totalPrice);
@@ -101,106 +101,111 @@ const TopNavigation = () => {
   const categories = [
     {
       id: 1,
-      name: 'Fruits & Vegetable',
-      image: fruits,
-      link: '/categories/FruitsandVegetable',
+      name: 'Chicken & Meat',
+      linkName: 'ChickenandMeat',
+      icon: '🍗',
     },
     {
       id: 2,
-      name: 'Chicken & Meat',
-      image: fish,
-      link: '/categories/ChickenandMeat',
+      name: 'Fruits & Vegetable',
+      linkName: 'FruitsandVegetable',
+      icon: '🥦',
     },
-    // {
-    //   id: 3,
-    //   name: 'Organic Food',
-    //   image: apple,
-    //   link: '/categories/Organic%20Food',
-    // },
-    // {
-    //   id: 4,
-    //   name: 'Cooking Essentials',
-    //   image: cooking,
-    //   link: '/categories/Cooking%20Essentials',
-    // },
-    // {
-    //   id: 5,
-    //   name: 'Breakfast',
-    //   image: breakfast,
-    //   link: '/categories/Breakfast',
-    // },
-    // {
-    //   id: 6,
-    //   name: 'Drinks',
-    //   image: drink,
-    //   link: '/categories/Drinks',
-    // },
     {
       id: 3,
       name: 'Milk & Dairy',
-      image: milk,
-      link: '/categories/MilkandDairy',
+      linkName: 'MilkandDairy',
+      icon: '🥛',
     },
-
     {
       id: 4,
       name: 'Grocery',
-      image: honey,
-      link: '/categories/Grocery',
+      linkName: 'Grocery',
+      icon: '🛒',
     },
-    // {
-    //   id: 9,
-    //   name: 'Jam & Jelly',
-    //   image: jam,
-    //   link: '/categories/Jam%20and%20Jelly',
-    // },
-    // {
-    //   id: 10,
-    //   name: 'Beauty & health',
-    //   image: beauty,
-    //   link: '/categories/Beauty%20and%20Health',
-    // },
     {
       id: 5,
-      name: 'Pharmacy',
-      image: dumbbell,
-      link: '/categories/Pharmacy',
+      name: 'Soup & Detergents',
+      linkName: 'SoupandDetergents',
+      icon: '🧼',
     },
-    // {
-    //   id: 12,
-    //   name: 'Pickles & Condiments',
-    //   image: chili,
-    //   link: '/categories/Pickles%20and%20Condiments',
-    // },
-    // {
-    //   id: 13,
-    //   name: 'Snacks & Instant',
-    //   image: chips,
-    //   link: '/categories/Snacks%20and%20Instant',
-    // },
-    // {
-    //   id: 14,
-    //   name: 'Biscuits & Cakes',
-    //   link: '/categories/Biscuits%20and%20Cakes',
-    //   image: cookie,
-    // },
     {
       id: 6,
-      name: 'Soup & Detergents',
-      link: '/categories/SoupandDetergents',
-      image: cleaner,
+      name: 'Baby Care & Beauty',
+      linkName: 'BabyCareandBeauty',
+      icon: '👶',
     },
     {
       id: 7,
-      name: 'Baby Care & Beauty',
-      image: baby,
-      link: '/categories/BabyCareandBeauty',
+      name: 'Pharmacy',
+      linkName: 'Pharmacy',
+      icon: '💊',
+    },
+    {
+      id: 8,
+      name: 'Confectionary',
+      linkName: 'Confectionary',
+      icon: '🍬',
     },
     // {
-    //   id: 17,
+    //   id: 9,
+    //   name: 'Decor',
+    //   linkName: 'Decor',
+    //   icon: '🏺',
+    // },
+    // {
+    //   id: 10,
+    //   name: 'Cosmetics',
+    //   linkName: 'Cosmetics',
+    //   icon: '💄',
+    // },
+    // {
+    //   id: 11,
     //   name: 'Pet Care',
-    //   image: cat,
-    //   link: '/categories/Pet%20Care',
+    //   linkName: 'PetCare',
+    //   icon: '🐾',
+    // },
+    // {
+    //   id: 12,
+    //   name: 'Stationery',
+    //   linkName: 'Stationery',
+    //   icon: '✏️',
+    // },
+    // {
+    //   id: 13,
+    //   name: 'Toys',
+    //   linkName: 'Toys',
+    //   icon: '🧸',
+    // },
+    // {
+    //   id: 14,
+    //   name: 'Instruments and Parts',
+    //   linkName: 'InstrumentsandParts',
+    //   icon: '⚙️',
+    // },
+    // {
+    //   id: 15,
+    //   name: 'Home Appliances',
+    //   linkName: 'HomeAppliances',
+    //   icon: '🔌',
+    // },
+    // {
+    //   id: 16,
+    //   name: 'Fashion',
+    //   linkName: 'Fashion',
+    //   icon: '👗',
+    // },
+    // {
+    //   id: 17,
+    //   name: 'Sports & Outdoors',
+    //   linkName: 'SportsandOutdoors',
+    //   icon: '⚽',
+    // },
+    // {
+    //   id: 18,
+    //   name: 'Jewelry & Accessories',
+    //   linkName: 'JewelryandAccessories',
+    //   icon: '💍',
     // },
   ];
 
@@ -211,29 +216,48 @@ const TopNavigation = () => {
           <Row>
             <Col lg={2} md={2} className='d-flex align-self-center'>
               <NavLink to='/' className={styles.logo}>
-                <img src={HeaderLogo} alt='headerLogo'/>
+                <img src={HeaderLogo} alt='headerLogo' />
               </NavLink>
             </Col>
-            <Col lg={7} md={7} sm={12} xs={12}>
+            {/* <Col lg={7} md={7} sm={12} xs={12}>
               <form onSubmit={searchSubmitHandler} className={styles.input}>
                 <input type='text' placeholder='Search for products (e.g. fish, apple, oil)' autoComplete='off' spellCheck='false' onChange={(e) => setKeyword(e.target.value)}/>
                 <button type='submit'>
                   <img src={searchIcon} alt='searchIcon' />
                 </button>
               </form>
+            </Col> */}
+            <Col lg={7} md={7} sm={12} xs={12}>
+              <form onSubmit={searchSubmitHandler} className={styles.input}>
+                <input
+                  type='text'
+                  placeholder='Search for products (e.g. fish, apple, oil)'
+                  autoComplete='off'
+                  spellCheck='false'
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                {/* Search Button */}
+                <button type='submit' className={styles.search__btn}>
+                  <img src={searchIcon} alt='searchIcon' />
+                </button>
+                {/* Compare Button */}
+                <button type='button' className={styles.compare__btn} onClick={() => navigate('/compare')} title="Compare Products">
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"></path></svg>
+                </button>
+              </form>
             </Col>
             <Col lg={3} md={3} className='d-flex justify-content-end align-self-center'>
               <div className='d-none d-md-block'>
                 <ul className={styles.top__nav__icon}>
-                  <li>
+                  {/* <li>
                     <img src={notifyIcon} alt='notifyIcon' />
-                  </li>
+                  </li> */}
 
                   <li className={styles.cart__icon}>
                     <img src={cartIcon} alt='cartIcon' onClick={handleShow} />
                     <span>{cartItems.length}</span>
                   </li>
-                  <li>{!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')} /> : <ProfileDetails comefrom={"pc"}/>}</li>
+                  <li>{!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')} /> : <ProfileDetails comefrom={"pc"} />}</li>
                   <Offcanvas show={show} onHide={handleClose} placement='end' scroll={true} style={{ zIndex: 10000000 }}>
                     <Offcanvas.Header closeButton className='offCanvas__header'>
                       <Offcanvas.Title>
@@ -275,7 +299,7 @@ const TopNavigation = () => {
                       </button>
                     </Offcanvas.Body>
                   </Offcanvas>
-                </ul> 
+                </ul>
               </div>
             </Col>
           </Row>
@@ -289,12 +313,15 @@ const TopNavigation = () => {
                 <ul className={styles.left__item}>
                   <li>
                     <span className={styles.category}>
-                      Categories
+                      All Categories
                       <FontAwesomeIcon icon={faChevronDown} style={{ fontSize: '10px', margin: '0 0 0 8px' }} />
                       <ul>
                         {categories.map((category) => (
-                          <NavLink to={!category.link ? '/' : category.link} key={category.id}>
-                            <img src={category.image} alt={category.name} />
+                          // <NavLink to={!category.link ? '/' : category.link} key={category.id}>
+                          <NavLink>
+                            <div className={styles.iconWrapper}>
+                              {category.icon}
+                            </div>
                             {category.name}
                           </NavLink>
                         ))}
@@ -330,10 +357,28 @@ const TopNavigation = () => {
 
                         <li>
                           <NavLink to='/dashboard' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
-                            <span style={{marginRight:"15px", marginLeft:"0px"}}>
-                            <FontAwesomeIcon icon={faClipboardList} />
+                            <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                              <FontAwesomeIcon icon={faClipboardList} />
                             </span>
-                              Dashboard
+                            Dashboard
+                          </NavLink>
+                        </li>
+
+                        <li>
+                          <NavLink to='/map' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                            <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                              <FontAwesomeIcon icon={faMap} />
+                            </span>
+                            Map
+                          </NavLink>
+                        </li>
+
+                        <li>
+                          <NavLink to='/create-store' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                            <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                              <FontAwesomeIcon icon={faStore} />
+                            </span>
+                            Set your Store
                           </NavLink>
                         </li>
 
@@ -403,7 +448,7 @@ const TopNavigation = () => {
             </span>
 
             <span className={styles.mobile__menu__icons}>
-              <img src={homeIcon} alt='homeIcon' onClick={() => navigate('/home')}/>
+              <img src={homeIcon} alt='homeIcon' onClick={() => navigate('/main-home')} />
             </span>
 
             <span className={styles.mobile__menu__icons} id={styles.mobile__cart}>
@@ -411,9 +456,9 @@ const TopNavigation = () => {
               <span>{cartItems.length}</span>
             </span>
 
-            <span className={styles.mobile__menu__icons} style={isAuthenticated ? { transform: 'translateY(-7px)' } : {marginBottom:'14px'}}>
-              {!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')}/> : <ProfileDetails comefrom={"mobile"}/>}
-              </span>
+            <span className={styles.mobile__menu__icons} style={isAuthenticated ? { transform: 'translateY(-7px)' } : { marginBottom: '14px' }}>
+              {!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')} /> : <ProfileDetails comefrom={"mobile"} />}
+            </span>
             <Offcanvas show={show} onHide={handleClose} placement='end' scroll={true}>
               <Offcanvas.Header closeButton className='offCanvas__header'>
                 <Offcanvas.Title>
@@ -459,7 +504,7 @@ const TopNavigation = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
                   <NavLink to='/' onClick={handleMenuClose}>
-                    <img src={Logo} alt='footerLogo' height="50px"  />
+                    <img src={Logo} alt='footerLogo' height="100px" />
                   </NavLink>
                 </Offcanvas.Title>
               </Offcanvas.Header>
@@ -485,13 +530,29 @@ const TopNavigation = () => {
 
                   <li>
                     <NavLink to='/dashboard' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
-                      <span style={{marginRight:"15px", marginLeft:"0px"}}>
-                      <FontAwesomeIcon icon={faClipboardList} />
+                      <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                        <FontAwesomeIcon icon={faClipboardList} />
                       </span>
-                        Dashboard
+                      Dashboard
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to='/map' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                      <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                        <FontAwesomeIcon icon={faMap} />
+                      </span>
+                      Map
                     </NavLink>
                   </li>
 
+                  <li>
+                    <NavLink to='/create-store' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                      <span style={{ marginRight: "15px", marginLeft: "0px" }}>
+                        <FontAwesomeIcon icon={faStore} />
+                      </span>
+                      Set your Store
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink to='/about-us' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={aboutUsIcon} alt='aboutUsIcon' /> About Us

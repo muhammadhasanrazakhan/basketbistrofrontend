@@ -85,6 +85,11 @@ const UpdateProduct = () => {
       name: 'Pharmacy',
       linkName: 'Pharmacy',
     },
+    {
+      id: 8,
+      name: 'Confectionary',
+      linkName: 'Confectionary',
+    },
   ];
 
 

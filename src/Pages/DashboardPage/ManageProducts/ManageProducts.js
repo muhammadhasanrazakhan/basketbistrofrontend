@@ -57,9 +57,9 @@ const ManageProducts = () => {
       dispatch({ type: DELETE_PRODUCT_RESET });
       dispatch(getAdminProduct());
     }
-    if (products?.length === 0) {
+    // if (products?.length === 0) {
     dispatch(getAdminProduct());
-    }
+    // }
   }, [dispatch, error, deleteError, isDeleted]);
 
   return (

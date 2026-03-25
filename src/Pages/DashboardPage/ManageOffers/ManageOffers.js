@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteOffer,
   getAllOffers,
+  getAllStoreOffers,
   changeOfferActivationByAdmin,
   clearErrors,
 } from "../../../actions/offerAction";
@@ -23,7 +24,7 @@ let offerUsers = [];
 const ManageOffers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, offers } = useSelector((state) => state.allOffers);
+  const { loading, error, offers } = useSelector((state) => state.adminStoreOffers);
   const { error: deleteError, isDeleted, loading : deleteloading } = useSelector((state) => state.offer);
   const { error: deactivatedError, isDeactivatedByAdmin, loading : deactivatedloading } = useSelector((state) => state.offer);
 
@@ -53,7 +54,7 @@ const ManageOffers = () => {
       });
     } else {
       dispatch(deleteOffer(id));
-      dispatch(getAllOffers());
+      dispatch(getAllStoreOffers());
     }
   };
 
@@ -61,11 +62,11 @@ const ManageOffers = () => {
       let User = {userid: userid, name: name, email:email}
       dispatch(changeOfferActivationByAdmin(offerID,User));
       setModal(!modal)
-      dispatch(getAllOffers());
+      dispatch(getAllStoreOffers());
   }
 
   const reloadOffers = () => {
-    dispatch(getAllOffers());
+    dispatch(getAllStoreOffers());
   }
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const ManageOffers = () => {
     }
 
     if (offers?.length === 0) {
-    dispatch(getAllOffers());
+      dispatch(getAllStoreOffers());
     }
   }, [dispatch, error, deleteError, isDeleted, deactivatedError, isDeactivatedByAdmin]);
 

@@ -11,7 +11,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <WelcomeText />
       {/* <OurFounders /> */}
       <DailyNeeds />

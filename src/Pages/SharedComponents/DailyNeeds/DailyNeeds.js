@@ -11,8 +11,8 @@ const DailyNeeds = () => {
       <Container>
         <Row>
           <Col lg={6} md={6} className={styles.daily__needs__content}>
-            <h5>Get Your Daily Needs From Our Basket Bistro Store</h5>
-            <p>There are many products you will find our shop, Choose your daily necessary product from our BasketBistro shop and get some special offer.</p>
+            <h5>Get Your Daily Needs From Our Mono Basket Store</h5>
+            <p>There are many products you will find our shop, Choose your daily necessary product from our Mono Basket shop and get some special offer.</p>
             <p>&nbsp;</p>
             <p>Soon you can find us through mobile app</p>
             <span>

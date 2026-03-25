@@ -11,7 +11,7 @@ import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
   useEffect(() => {
-    document.title = 'Home | Basket Bistro';
+    document.title = 'Home | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -20,8 +20,8 @@ const Home = () => {
   return (
     <>
       {/* <TopNavigation /> */}
-      <Banner />
-      <AboutUs />
+      {/* <Banner /> */}
+      {/* <AboutUs /> */}
       <FeaturedCategories />
       <Products />
       <CartTracker />

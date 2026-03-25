@@ -17,7 +17,7 @@ const Footer = () => {
             <Col lg={6} md={12} className={styles.logo}>
               <img src={Logo} alt='footerLogo' />
               <p>
-                There are many popular products you will find our shop, Choose your daily necessary product from our BasketBistro shop and get some special offer.
+                There are many popular products you will find our shop, Choose your daily necessary product from our Mono Basket shop and get some special offer.
               </p>
               <h6>Follow Us</h6>
               <ul className={styles.social__link}>
@@ -53,7 +53,7 @@ const Footer = () => {
                 </li> */}
               </ul>
             </Col>
-             <Col lg={2} md={4} sm={6} xs={6} className={styles.temp__column}>
+            <Col lg={2} md={4} sm={6} xs={6} className={styles.temp__column}>
               {/* <h5>Company</h5>
               <ul>
                 <li>
@@ -72,7 +72,7 @@ const Footer = () => {
                   <NavLink to='/'>Latest Discount</NavLink>
                 </li>
               </ul> */}
-            </Col> 
+            </Col>
             <Col lg={2} md={4} sm={6} xs={6} className={styles.footer__column}>
               <h5>Top Category</h5>
               <ul>
@@ -117,13 +117,13 @@ const Footer = () => {
         </Container>
       </footer>
       <section id={styles.copyright__area} className='container'>
-      <small>
-        &copy; {new Date().getFullYear()}{' '}
-        <a target='_blank' rel='noopener noreferrer' className='mx-1'>
-          HasanRaza
-        </a>
-        , All rights reserved.
-      </small>
+        <small>
+          &copy; {new Date().getFullYear()}{' '}
+          <a target='_blank' rel='noopener noreferrer' className='mx-1'>
+            HasanRaza
+          </a>
+          , All rights reserved.
+        </small>
         {/* <img src={paymentLogo} alt='paymentLogo' /> */}
       </section>
     </>

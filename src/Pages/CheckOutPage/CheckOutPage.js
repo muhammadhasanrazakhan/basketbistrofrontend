@@ -30,7 +30,8 @@ const CheckOutPage = () => {
 
   const [address, setAddress] = useState(shippingInfo.address);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
-  const [paymentmethod, setPaymentmethod] = useState(shippingInfo.paymentmethod);
+  // const [paymentmethod, setPaymentmethod] = useState(shippingInfo.paymentmethod);
+  const paymentmethod = "COD"
   
   var cartChecked = false;
   var listChecked = false;
@@ -58,8 +59,14 @@ const CheckOutPage = () => {
   
   const Order = {
     shippingInfo: {address : address, phoneNo : phoneNo, paymentmethod : paymentmethod},
-    orderItems: [],
-    orderCustomList: "",
+    orderItems: cartItems.map(item => ({
+      product: item.product,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      image: item.image,
+    })),
+    orderCustomList: listItems,
     itemsPrice: totalPrice,
     taxPrice: 0,
     shippingPrice: shipping,
@@ -68,7 +75,7 @@ const CheckOutPage = () => {
   };
 
   useEffect(() => {
-    document.title = 'Checkout | Basket Bistro';
+    document.title = 'Checkout | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -110,12 +117,12 @@ const CheckOutPage = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
      
-    if (Order.orderItems.length === 0 && Order.orderCustomList.length < 3) {
-      toast.error("Please select at least one checkbox", {
-        duration: 2000,
-      });
-      return;
-    }
+    // if (Order.orderItems.length === 0 && Order.orderCustomList.length < 3) {
+    //   toast.error("Please select at least one checkbox", {
+    //     duration: 2000,
+    //   });
+    //   return;
+    // }
 
     if (Order.orderCustomList.length>3) {
       Order.totalPrice = 0
@@ -157,7 +164,7 @@ const CheckOutPage = () => {
       }  
       dispatch(clearNewOrder());
       dispatch(clearMyOrders());
-      navigate('/home'); 
+      navigate('/main-home'); 
     }
   }, [dispatch, error, success, loading, alert]);
 
@@ -234,7 +241,7 @@ const CheckOutPage = () => {
                     </Col>
                     <Col lg={4} className='mt-4'>
                       <label htmlFor='city'>Contact No.</label>
-                      <input type='number' name='phone' id='city' placeholder='03XX-XXXXXXX' autoComplete='off' required value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
+                      <input type='number' name='phone' id='city' placeholder='03XX-XXXXXXX' autoComplete='off' value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
                     </Col>
                     {/* <Col lg={4} className='mt-4'>
                       <label htmlFor='country'>Your Country</label>
@@ -246,7 +253,7 @@ const CheckOutPage = () => {
                     </Col> */}
                   </Row>
 
-                  <h4 className='my-5'>03. Payment Details</h4>
+                  {/* <h4 className='my-5'>03. Payment Details</h4>
                   <Row>
                     <Col lg={6} className={styles.payment__methods}>
                       <label htmlFor='money'>
@@ -262,7 +269,7 @@ const CheckOutPage = () => {
                       </label>
                       <input type='radio' name='payment' id={styles.money} required value="EP" onChange={(e) => setPaymentmethod(e.target.value)} />
                     </Col>
-                  </Row>
+                  </Row> */}
 
                   {listItems.length > 3 && cartItems.length !== 0 ? (    
                   <>
@@ -333,11 +340,11 @@ const CheckOutPage = () => {
                     <span>Subtotal</span> <span>{listItems.length > 3 ? "Calculating..." : `Rs. ${totalPrice}.00`}</span>
                   </li>
                   <li>
-                    <span>Shipping Cost</span> <span>Rs. XXX.XX</span>
+                    <span>Shipping Cost</span> <span>Rs. 150</span>
                   </li>
                   <li>
-                    {/* <span>TOTAL COST</span> <span>{listItems.length > 3 ? "Calculating..." : `Rs. ${total}.00`}</span> */}
-                    <span>TOTAL COST</span> <span>Calculating...</span>
+                    <span>TOTAL COST</span> <span>{listItems.length > 3 ? "Calculating..." : `Rs. ${total}.00`}</span>
+                    {/* <span>TOTAL COST</span> <span>Calculating...</span> */}
                   </li>
                 </ul>
               </div>

@@ -46,10 +46,10 @@ const Loginuser = () => {
     dispatch(login(loginEmail, loginPassword));
   };
 
-  const redirect = "/home";
+  const redirect = "/main-home";
 
   useEffect(() => {
-    document.title = 'Login | Basket Bistro';
+    document.title = 'Login | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -107,7 +107,7 @@ const Loginuser = () => {
                 id='email' 
                 autoComplete='off' 
                 spellCheck='false' 
-                placeholder='Enter Your Email or Phone Number' 
+                placeholder='Enter Your Email' 
                 required 
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}  

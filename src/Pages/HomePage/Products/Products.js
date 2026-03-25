@@ -1,6 +1,7 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +15,7 @@ import styles from './Products.module.css';
 const Products = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { storeID } = useParams();
   const { loading, error, products } = useSelector((state) => state.products);
   // useEffect(() => {
   //   dispatch(loadProductsAsync());
@@ -28,10 +30,12 @@ const Products = () => {
       });
       dispatch(clearErrors());
     }
-    if (products?.length === 0) {
-    dispatch(getProduct());
+    if (storeID) {
+      dispatch(getProduct("", 1, [0, 25000], undefined, 0, storeID)); 
+    } else {
+      dispatch(getProduct()); // Default products agar ID na ho
     }
-  }, [dispatch]);
+  }, [dispatch, error, storeID]);
 
   return (
     <section id={styles.products}>

@@ -24,3 +24,12 @@
   margin: 0;
   text-align: left;
 }
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  margin: 0 10px 0 0;
+}

@@ -27,7 +27,10 @@ import Footer from './Pages/SharedComponents/Footer/Footer';
 import PreLoader from './Pages/SharedComponents/PreLoader/PreLoader';
 import ScrollToTop from './Pages/SharedComponents/ScrollToTop/ScrollToTop';
 import Home from './Pages/HomePage/Home/Home';
+import MainHome from './Pages/MainHomePage/MainHome/MainHome';
 import Loginuser from './Pages/AuthPage/LogIn/Loginuser';
+import Compare from './Pages/ComparePage/ComparePage';
+import Map from './Pages/MapPage/Map';
 import AboutUs from './Pages/AboutUsPage/AboutUs/AboutUs';
 import Register from './Pages/AuthPage/Register/Register';
 import ChangePassword from './Pages/AuthPage/ChangePassword/ChangePassword';
@@ -42,6 +45,8 @@ import Offer from './Pages/OfferPage/Offer';
 import ResetPassword from'./Pages/AuthPage/ResetPassword/ResetPassword';
 import NewPassword from './Pages/AuthPage/NewPassword/NewPassword';
 import TermsAndCondition from './Pages/TermsAndConditionPage/TermsAndCondition';
+import AllStores from './Pages/AllStores/AllStores';
+import CreateStore from './Pages/CreateStore/CreateStore';
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 
@@ -83,8 +88,12 @@ function App() {
       <Toaster />
       {/* <Suspense fallback={<PreLoader />}> */}
         <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/' element={<MainHome />} />
+          <Route exact path='/home/:storeID' element={<Home />} />
+          <Route exact path='/main-home' element={<MainHome />} />
+          <Route exact path='/all-stores' element={<AllStores />} />
+          <Route exact path='/compare' element={<Compare />} />
+          <Route exact path='/map' element={<Map />} />
           <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/contact-us' element={<ContactUs />} />
           <Route exact path='/privacy-policy' element={<PrivacyPolicy />} />
@@ -94,6 +103,14 @@ function App() {
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/reset-password' element={<ResetPassword />} />
           <Route exact path="/password/reset/:token" element={<NewPassword />} />
+          <Route
+           exact path='/create-store' 
+           element={
+             <RequiredAuth>   
+               <CreateStore />
+             </RequiredAuth>
+           } 
+          />
 
           <Route
             exact path='/dashboard'
@@ -106,7 +123,7 @@ function App() {
             <Route exact path='/dashboard' element={<Profile />} />
             <Route exact path='/dashboard/profile' element={<Profile />} />
             <Route exact path='/dashboard/my-orders' element={<MyOrders />} />
-            <Route exact path='/dashboard/review' element={<AddReview />} />
+            {/* <Route exact path='/dashboard/review' element={<AddReview />} /> */}
             <Route
               exact path='/dashboard/add-product'
               element={
@@ -131,14 +148,14 @@ function App() {
                 </IsAdmin>
               }
             />
-            <Route
+            {/* <Route
               exact path='/dashboard/make-admin'
               element={
                 <IsAdmin>
                   <AddAdmin />
                 </IsAdmin>
               }
-            />
+            /> */}
             <Route
               exact path='/dashboard/manage-products'
               element={
@@ -147,14 +164,14 @@ function App() {
                 </IsAdmin>
               }
             />
-            <Route
+            {/* <Route
               exact path='/dashboard/manage-users'
               element={
                 <IsAdmin>
                   <ManageUsers />
                 </IsAdmin>
               }
-            />
+            /> */}
             <Route
               exact path='/dashboard/manage-offers'
               element={

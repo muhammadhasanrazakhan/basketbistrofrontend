@@ -1,0 +1,136 @@
+.createStoreContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #f9fafb;
+}
+
+.storeForm {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+}
+
+.inputGroup {
+  margin-bottom: 22px;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 7px;
+  display: block;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.locationContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.locationBtn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.locationBtn:hover {
+  background: #2563eb;
+}
+
+.locationText {
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.categoriesDropdown {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f3f4f6;
+  padding: 8px 6px;
+}
+
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  /* Vertical alignment center karne ke liye */
+  gap: 8px;
+  padding: 6px 4px;
+  width: 100%;
+  /* Poori width le */
+  justify-content: flex-start;
+  /* Items ko left align karega */
+}
+
+.categoryItem input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  width: auto;
+  /* Agar pehle se koi width inherit ho rahi ho to reset ho jaye */
+}
+
+.categoryItem label {
+  font-size: 15px;
+  color: #374151;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 0;
+  /* Extra margin khatam karne ke liye */
+  flex: 1;
+  /* Label bachi hui poori jagah le lega */
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover {
+  background: #059669;
+}
+
+@media (max-width: 600px) {
+  .storeForm {
+    padding: 18px 8px;
+    max-width: 98vw;
+  }
+}

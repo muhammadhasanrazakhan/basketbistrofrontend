@@ -51,7 +51,7 @@ const ChangePassword = () => {
           duration: 2000,
         });
   
-        navigate("/home");
+        navigate("/");
   
         dispatch({
           type: UPDATE_PASSWORD_RESET,
@@ -61,7 +61,7 @@ const ChangePassword = () => {
 
 
   useEffect(() => {
-    document.title = 'Change Password | Basket Bistro';
+    document.title = 'Change Password | Mono Basket';
     window.scrollTo({
       top: 0,
     });

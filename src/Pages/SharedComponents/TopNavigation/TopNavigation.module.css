@@ -9,13 +9,16 @@
 }
 
 #header__top form input {
-  width: 95%;
+  width: 100%;
+  box-sizing: border-box; /* Yeh zaroori hai */
   outline: 0;
   border: 0;
-  padding: 12px 25px;
+  /* Right padding barha di hai taake 2 icons ki jagah banay */
+  padding: 12px 80px 12px 25px;
   font-family: inherit;
   border-radius: 5px;
   margin-top: 5px;
+  height: 48px; /* Aik makhsoos height de dein */
 }
 
 #header__top form input::placeholder {
@@ -23,18 +26,42 @@
   font-family: inherit;
 }
 
-#header__top form button {
+#header__top form .compare__btn {
   border: 0;
   outline: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-weight: 400;
-  background-color: #fff;
+  background-color: transparent;
   padding: 10px;
-  right: 40px;
-  text-align: center;
+  right: 7px;
+  cursor: pointer;
+  color: #333;
+  
+  /* Yeh lines add karein */
+  border-left: 1px solid #e5e7eb; /* Halka sa border */
+  border-radius: 0; /* Corners ko seedha karega */
+  padding-left: 8px; /* Border se thori space */
 }
+
+/* Search button ke liye style */
+#header__top form .search__btn {
+  border: 0;
+  outline: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  padding: 10px;
+  right: 50px; /* New value (further from edge) */
+  cursor: pointer;
+  color: #b0b7c5;
+}
+
+#header__top form .compare__btn:hover {
+  color: #333;
+}
+
 
 #header__top .top__nav__icon {
   color: #fff;
@@ -156,12 +183,21 @@
 }
 
 .logo img {
-  width: 110px;
+  width: 50px;
 }
 
 .nav__items {
   padding: 17px 0;
   border-bottom: 1px solid #4b55631c;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  width: 15px;
+  margin: 0 10px 0 0;
 }
 
 .nav__items .left__item li a,

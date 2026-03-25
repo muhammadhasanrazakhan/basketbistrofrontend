@@ -1,0 +1,123 @@
+.card {
+  background-color: #fff;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 1px 3px 7px #0000002e;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Image Section */
+.card__img {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover .card__img {
+  transform: scale(1.1);
+}
+
+.card img {
+  height: 150px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.card:hover {
+  box-shadow: 1px 3px 20px #0000002e;
+}
+
+.card img {
+  height: 150px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.card .card__content {
+  padding: 20px 15px; /* Bottom space kam karne ke liye padding set ki */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Sab kuch left se shuru hoga */
+  width: 100%;
+}
+
+.card .card__content h5 {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  width: 100%; /* Full width for left alignment */
+}
+.card .card__content h6 {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  width: 100%; /* Full width for left alignment */
+}
+/* .storeName {
+  display: block;
+  font-size: 10px;
+  color: #9ca3af;
+  font-weight: 500;
+  margin: 4px 0 0 0;
+  text-align: right;
+  width: 100%;
+}
+
+.storeName strong {
+  color: #6b7280;
+  font-weight: 600;
+} */
+
+/* Nayi class price aur button ko sahi align karne ke liye */
+.priceRow {
+  display: flex;
+  justify-content: space-between; /* Rs. (Left) and Button (Right) */
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.card .card__content h4 {
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  margin: 0;
+}
+
+.card .card__content button {
+  border: 1px solid #10b981;
+  padding: 4px 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.card .card__content button:hover {
+  background-color: #10b981;
+}
+
+.card .card__content button:hover svg {
+  fill: #fff;
+}
+
+.card .card__content button:hover {
+  background-color: #10b981;
+}
+
+.card .card__content button:disabled {
+  border: 1px solid #10b98149;
+  cursor: not-allowed;
+  background-color: #10b98149;
+}
+/* ... Baki disabled states same rahengi */

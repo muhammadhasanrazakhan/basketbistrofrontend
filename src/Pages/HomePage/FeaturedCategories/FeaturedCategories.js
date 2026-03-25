@@ -22,61 +22,140 @@ import drink from '../../../assets/images/categories/soft-drink.webp';
 import jam from '../../../assets/images/categories/strawberry-jam.webp';
 import CategoryCard from '../CategoryCard/CategoryCard';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import styles from './FeaturedCategories.module.css';
 
 const FeaturedCategories = () => {
   const navigate = useNavigate();
-  
-  const categories = [
+  const { stores, error } = useSelector((state) => state.stores);
+  const { storeID } = useParams();
+  const allCategories = [
     {
       id: 1,
       name: 'Chicken & Meat',
       linkName: 'ChickenandMeat',
-      images: fish,
+      icon: '🍗',
     },
     {
       id: 2,
       name: 'Fruits & Vegetable',
       linkName: 'FruitsandVegetable',
-      images: fruits,
+      icon: '🥦',
     },
     {
       id: 3,
       name: 'Milk & Dairy',
       linkName: 'MilkandDairy',
-      images: milk,
+      icon: '🥛',
     },
     {
       id: 4,
       name: 'Grocery',
       linkName: 'Grocery',
-      images: honey,
+      icon: '🛒',
     },
     {
       id: 5,
       name: 'Soup & Detergents',
       linkName: 'SoupandDetergents',
-      images: cleaner,
+      icon: '🧼',
     },
     {
       id: 6,
       name: 'Baby Care & Beauty',
       linkName: 'BabyCareandBeauty',
-      images: baby,
+      icon: '👶',
     },
     {
       id: 7,
       name: 'Pharmacy',
       linkName: 'Pharmacy',
-      images: dumbbell,
+      icon: '💊',
     },
+    {
+      id: 8,
+      name: 'Confectionary',
+      linkName: 'Confectionary',
+      icon: '🍬',
+    },
+    // {
+    //   id: 9,
+    //   name: 'Decor',
+    //   linkName: 'Decor',
+    //   icon: '🏺',
+    // },
+    // {
+    //   id: 10,
+    //   name: 'Cosmetics',
+    //   linkName: 'Cosmetics',
+    //   icon: '💄',
+    // },
+    // {
+    //   id: 11,
+    //   name: 'Pet Care',
+    //   linkName: 'PetCare',
+    //   icon: '🐾',
+    // },
+    // {
+    //   id: 12,
+    //   name: 'Stationery',
+    //   linkName: 'Stationery',
+    //   icon: '✏️',
+    // },
+    // {
+    //   id: 13,
+    //   name: 'Toys',
+    //   linkName: 'Toys',
+    //   icon: '🧸',
+    // },
+    // {
+    //   id: 14,
+    //   name: 'Instruments and Parts',
+    //   linkName: 'InstrumentsandParts',
+    //   icon: '⚙️',
+    // },
+    // {
+    //   id: 15,
+    //   name: 'Home Appliances',
+    //   linkName: 'HomeAppliances',
+    //   icon: '🔌',
+    // },
+    // {
+    //   id: 16,
+    //   name: 'Fashion',
+    //   linkName: 'Fashion',
+    //   icon: '👗',
+    // },
+    // {
+    //   id: 17,
+    //   name: 'Sports & Outdoors',
+    //   linkName: 'SportsandOutdoors',
+    //   icon: '⚽',
+    // },
+    // {
+    //   id: 18,
+    //   name: 'Jewelry & Accessories',
+    //   linkName: 'JewelryandAccessories',
+    //   icon: '💍',
+    // },
   ];
+
+  const categories = React.useMemo(() => {
+    if (storeID && stores && stores.length > 0) {
+      const store = stores.find((s) => s._id === storeID);
+      if (store && store.categories && store.categories.length > 0) {
+        return allCategories.filter((cat) => store.categories.includes(cat.name));
+      }
+    }
+    return allCategories; // Fallback to all categories if no specific store or empty categories
+  }, [storeID, stores]);
 
   return (
     <section id={styles.categories}>
       <Container>
         <h3>Featured Categories</h3>
-        <p>Choose your necessary products from this feature categories.</p>
+        <p>Theses store deals in that particular categories.</p>
         <Row className='mt-3 pb-4 g-4'>
           {
             // map category data
@@ -84,14 +163,14 @@ const FeaturedCategories = () => {
               <CategoryCard key={category.id} category={category} />
             ))
           }
-          <Col lg={2} md={3} sm={4} xs={6}>
+          {/* <Col lg={2} md={3} sm={4} xs={6}>
             <div className={styles.card}  onClick={() => navigate('/addcustomlist')}>
               <span>
                 <FontAwesomeIcon icon={faPlus} />
               </span>
               <h6>Add Your Custom List</h6>
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </section>

@@ -341,7 +341,7 @@ const OrderDetails = () => {
                   Shipping Cost
                 </span>
                 <span style={{ fontSize: '14px', color: '#6B7280', fontWeight: '600', display: 'block' }}>
-                  XXX
+                  {order?.shippingPrice}
                 </span>
               </div>
               <div style={{marginBottom: "1rem", flexDirection: "column", flexWrap: "wrap"}}>

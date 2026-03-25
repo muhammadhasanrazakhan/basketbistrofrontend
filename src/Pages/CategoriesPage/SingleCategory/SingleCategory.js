@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useMatch } from 'react-router-dom';
+import { useParams, useMatch, useLocation } from 'react-router-dom';
 import { clearErrors, getProduct } from "../../../actions/productAction";
 //import { emptyPrev, loadQueryProductsAsync, productSorting } from '../../../redux/feathers/productsSlice';
 import ProductCard from '../../HomePage/ProductCard/ProductCard';
@@ -39,6 +39,9 @@ const SingleCategory = () => {
   const [price, setPrice] = useState([0, 25000]);
   const [ratings, setRatings] = useState(0);
   // alert(category)
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get('store');
 
   const filterProducts = (products, keyword1, category1) => {
     let filteredProducts1 = [...(products || [])];
@@ -53,6 +56,11 @@ const SingleCategory = () => {
     if (category1 !== "") {
       filteredProducts1 = filteredProducts1.filter(
         (product) => product.category === category1
+      );
+    }
+    if (storeID !== null && storeID !== "") {
+      filteredProducts1 = filteredProducts1.filter(
+        (product) => product.store === storeID
       );
     }
     setProductsCount(filteredProducts1.length)

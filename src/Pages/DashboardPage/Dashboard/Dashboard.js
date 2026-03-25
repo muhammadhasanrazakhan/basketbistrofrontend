@@ -22,7 +22,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    document.title = 'Dashboard | Basket Bistro';
+    document.title = 'Dashboard | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -43,18 +43,18 @@ const Dashboard = () => {
                 </NavLink>
                 {user?.role !== "admin" ? (
                   <>
-                    <NavLink to='/dashboard/my-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    {/* <NavLink to='/dashboard/my-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faTasks} />
                       </span>
                       My Orders
-                    </NavLink>
-                    <NavLink to='/dashboard/review' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    </NavLink> */}
+                    {/* <NavLink to='/dashboard/review' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faQuoteLeft} />
                       </span>
                       Review
-                    </NavLink>
+                    </NavLink> */}
                   </>
                 ) : (
                   <>
@@ -70,12 +70,12 @@ const Dashboard = () => {
                       </span>
                       Create Offer
                     </NavLink>
-                    <NavLink to='/dashboard/make-admin' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    {/* <NavLink to='/dashboard/make-admin' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faUserPlus} />
                       </span>
                       Add Admin
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to='/dashboard/manage-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faListCheck} />
@@ -88,12 +88,12 @@ const Dashboard = () => {
                       </span>
                       Manage Products
                     </NavLink>
-                    <NavLink to='/dashboard/manage-users' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    {/* <NavLink to='/dashboard/manage-users' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faUser} />
                       </span>
                       Manage Users
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to='/dashboard/manage-offers' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faCircleDollarToSlot} />
@@ -103,7 +103,12 @@ const Dashboard = () => {
 
                   </>
                 )}
-
+                <NavLink to='/dashboard/my-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                  <span>
+                    <FontAwesomeIcon icon={faTasks} />
+                  </span>
+                  My Orders
+                </NavLink>
                 <NavLink to='/' onClick={signOut}>
                   <span>
                     <FontAwesomeIcon icon={faSignOutAlt} />

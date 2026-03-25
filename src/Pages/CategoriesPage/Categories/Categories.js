@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import apple from '../../../assets/images/categories/apple.webp';
 import baby from '../../../assets/images/categories/baby.webp';
 import beauty from '../../../assets/images/categories/beauty.webp';
@@ -35,56 +35,76 @@ const categories = [
     id: 1,
     name: 'Chicken & Meat',
     linkName: 'ChickenandMeat',
-    images: fish,
+    icon: '🍗',
   },
   {
     id: 2,
     name: 'Fruits & Vegetable',
     linkName: 'FruitsandVegetable',
-    images: vegetable,
+    icon: '🥦',
   },
   {
     id: 3,
     name: 'Milk & Dairy',
     linkName: 'MilkandDairy',
-    images: milk,
+    icon: '🥛',
   },
   {
     id: 4,
     name: 'Grocery',
     linkName: 'Grocery',
-    images: honey,
+    icon: '🛒',
   },
   {
     id: 5,
     name: 'Soup & Detergents',
     linkName: 'SoupandDetergents',
-    images: cleaner,
+    icon: '🧼',
   },
   {
     id: 6,
     name: 'Baby Care & Beauty',
     linkName: 'BabyCareandBeauty',
-    images: baby,
+    icon: '👶',
   },
   {
     id: 7,
     name: 'Pharmacy',
     linkName: 'Pharmacy',
-    images: dumbbell,
+    icon: '💊',
+  },
+  {
+    id: 8,
+    name: 'Confectionary',
+    linkName: 'Confectionary',
+    icon: '🍬',
   },
 ];
 
 const Categories = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get('store');
+  const { stores } = useSelector((state) => state.stores);
+
+  const sidebarCategories = React.useMemo(() => {
+    if (storeID && stores && stores.length > 0) {
+      const store = stores.find((s) => s._id === storeID);
+      if (store && store.categories && store.categories.length > 0) {
+        return categories.filter((cat) => store.categories.includes(cat.name));
+      }
+    }
+    return categories; // Fallback to all categories
+  }, [storeID, stores]);
   //const match = useMatch('/products/:keyword');
   //const [category, setCategory] = useState("");
-  
+
   const {
     error,
   } = useSelector((state) => state.products);
   // const keyword = match?.params?.keyword;
-  
+
   // const changeCategory = (newcategory) => {
   //   setCategory(newcategory)
   // }
@@ -99,7 +119,7 @@ const Categories = () => {
   // }, [dispatch, keyword, category, error]);
 
 
-  
+
   // for (const pd of state.productsState) {
   //   category = [...category, pd.category];
   // }
@@ -163,7 +183,7 @@ const Categories = () => {
   // }
 
   useEffect(() => {
-    document.title = 'All Categories | Basket Bistro';
+    document.title = 'All Categories | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -180,10 +200,14 @@ const Categories = () => {
             <Col lg={3}>
               <h3 className='mb-4'>Categories</h3>
               <aside id={styles.aside}>
-                {categories.map((category, idx) => (
-                  <NavLink key={idx} to={`/categories/${category.linkName}`} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                {sidebarCategories.map((category, idx) => (
+                  <NavLink 
+                    key={idx} 
+                    to={`/categories/${category.linkName}${storeID ? `?store=${storeID}` : ''}`} 
+                    className={(navInfo) => (navInfo.isActive ? styles.active : '')}
+                  >
                     <span>
-                      <img src={category.images} alt={category.name} />
+                      {category.icon}
                     </span>
                     {category.name}
                   </NavLink>

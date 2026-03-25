@@ -26,6 +26,9 @@ import {
     OFFER_DETAILS_FAIL,
     CLEAR_NEW_OFFER,
     CLEAR_ERRORS,
+    ADMIN_STORE_OFFERS_REQUEST,
+    ADMIN_STORE_OFFERS_SUCCESS,
+    ADMIN_STORE_OFFERS_FAIL,
   } from "../constants/offerConstants";
 
   export const newOfferReducer = (state = { offer : {} }, action) => {
@@ -203,6 +206,33 @@ import {
           error: null,
         };
   
+      default:
+        return state;
+    }
+  };
+
+  export const adminStoreOffersReducer = (state = { offers: [] }, action) => {
+    switch (action.type) {
+      case ADMIN_STORE_OFFERS_REQUEST:
+        return {
+          loading: true,
+          offers: [],
+        };
+      case ADMIN_STORE_OFFERS_SUCCESS:
+        return {
+          loading: false,
+          offers: action.payload.offers,
+        };
+      case ADMIN_STORE_OFFERS_FAIL:
+        return {
+          loading: false,
+          error: action.payload,
+        };
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
       default:
         return state;
     }

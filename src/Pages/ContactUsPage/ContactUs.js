@@ -12,13 +12,13 @@ const ContactUs = () => {
     window.scrollTo({
       top: 0,
     });
-    document.title = 'Contact Us | Basket Bistro';
+    document.title = 'Contact Us | Mono Basket';
   }, []);
 
   return (
     <>
       {/* <TopNavigation /> */}
-      <Banner />
+      {/* <Banner /> */}
       <Container id={styles.contact__page}>
         <Row>
           <Col lg={6} md={6}>

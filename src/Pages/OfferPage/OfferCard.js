@@ -87,15 +87,15 @@ const OfferCard = ({offer}) => {
       <div className={styles.adjustmentdiv}>
         <div className={styles.offerContent}>
           <h4>{title}</h4>
-          <p className={isActive ? styles.activestatusBoxText : styles.inactivestatusBoxText}>{isActive ? 'Active' : 'Inactive'}</p>
+          <p className={isActive ? styles.activestatusBoxText : styles.inactivestatusBoxText}>{isActive ? 'Interested' : 'Not Interested'}</p>
           <p className={styles.offerDiscription}>{description}</p>
         </div>
       </div>
       <div className={styles.separator}></div>
       <p className={styles.statusTimeText}>{duration != (0) ? daysRemaining(createdAt, duration) : 'This is not a limited time offer'}</p>
       <div className={styles.buttonDiv}>
-        <button className={isActive ? styles.activeofferButton : styles.inactiveofferButton} onClick={() => changeActivation(_id)}>{isActive ? 'Dectivate' : 'Activate'}</button>
-        <p className={isActive ? styles.activeinstruction : styles.inactiveinstruction}>{isActive ? 'Contact us, If you have any query' : 'Push the button to activate offer'}</p>
+        <button className={isActive ? styles.activeofferButton : styles.inactiveofferButton} onClick={() => changeActivation(_id)}>{isActive ? 'Not Interested' : 'Show Interest'}</button>
+        <p className={isActive ? styles.activeinstruction : styles.inactiveinstruction}>{isActive ? 'Contact us, If you have any query' : 'Push the button to show your interest in that offer'}</p>
       </div>
     </div>
   );

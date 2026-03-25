@@ -1,0 +1,57 @@
+.map-page-wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.map-page-container {
+  height: calc(100vh - 160px);
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1 !important;
+  /* Forces Leaflet to stay behind TopNavigation dropdowns */
+}
+
+.map-button-container {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+@media (max-width: 991px) {
+  .map-page-wrapper {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+
+  .map-page-container {
+    height: calc(100vh - 250px);
+  }
+}
+
+@media (max-width: 768px) {
+  .map-page-wrapper {
+    padding-top: 40px;
+    padding-bottom: 15px;
+  }
+
+  .map-page-container {
+    height: calc(100vh - 140px);
+  }
+
+  .map-button-container {
+    bottom: 20px;
+    /* Above the bottom navigator */
+  }
+
+
+}

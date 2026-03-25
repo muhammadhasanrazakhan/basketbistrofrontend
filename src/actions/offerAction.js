@@ -20,6 +20,9 @@ import {
     OFFER_DETAILS_REQUEST,
     OFFER_DETAILS_SUCCESS,
     OFFER_DETAILS_FAIL,
+    ADMIN_STORE_OFFERS_REQUEST,
+    ADMIN_STORE_OFFERS_SUCCESS,
+    ADMIN_STORE_OFFERS_FAIL,
     CLEAR_NEW_OFFER,
     CLEAR_ERRORS,
 } from "../constants/offerConstants";
@@ -61,6 +64,20 @@ export const getAllOffers = () => async (dispatch) => {
     dispatch({
     type: ALL_OFFERS_FAIL,
     payload: error.response.data.message,
+    });
+  }
+};
+
+// Get All Store Offers (admin)
+export const getAllStoreOffers = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_STORE_OFFERS_REQUEST });
+    const { data } = await API.get("/api/bb/admin/offers");
+    dispatch({ type: ADMIN_STORE_OFFERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ADMIN_STORE_OFFERS_FAIL,
+      payload: error.response?.data?.message || error.message,
     });
   }
 };

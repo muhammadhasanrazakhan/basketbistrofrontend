@@ -9,7 +9,7 @@ const WelcomeText = () => {
     <Container id={styles.welcome__text}>
       <Row className='gx-4'>
         <Col lg={6} md={6} className='gx-4'>
-          <h3>Welcome to Basket Bistro</h3>
+          <h3>Welcome to Mono Basket</h3>
           <p>
           Welcome to our premier online grocery shopping destination! Whether you're a busy professional, a parent on the go, or simply 
           someone who appreciates the convenience of shopping from the comfort of your own home, we are here to redefine the way you 
@@ -53,7 +53,7 @@ const WelcomeText = () => {
           grocery shopping experience effortless, efficient, and enjoyable. Get ready to embark on a seamless journey through our virtual aisles, 
           where convenience meets quality, and where your satisfaction is our top priority.
           </p>
-      <img src={banner} alt='banner' />
+      {/* <img src={banner} alt='banner' /> */}
     </Container>
   );
 };

@@ -36,7 +36,7 @@ import API from "../api";
 
 // Get All Products
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
+  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0, storeID ) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
@@ -45,6 +45,10 @@ export const getProduct =
 
       if (category) {
         link = `/api/bb/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      }
+
+      if (storeID) {
+        link = `/api/bb/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&store=${storeID}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await API.get(link);

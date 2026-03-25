@@ -18,9 +18,9 @@ const Offer = () => {
     error: updateError,
     isActivated,
   } = useSelector((state) => state.offer);
-  
+
   useEffect(() => {
-    document.title = 'Offers | Basket Bistro';
+    document.title = 'Offers | Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -49,30 +49,30 @@ const Offer = () => {
       dispatch({ type: UPDATE_OFFER_ACTIVATION_RESET });
       dispatch(getAllOffers());
       // setDisabled(false)
-    } 
-    
+    }
+
     if (offers?.length === 0) {
-    dispatch(getAllOffers());
+      dispatch(getAllOffers());
     }
   }, [dispatch, error, isActivated, updateError]);
-  
+
   return (
     <>
-      <Banner />
-      { (loading || activateloading) ? (
+      {/* <Banner /> */}
+      {(loading || activateloading) ? (
         <LoadingSpinner />
       ) : (
-      <>  
-      <h1 className={styles.mainHeading}>Offers</h1>
-      <Container id={styles.offer__container}>
-        {offers?.map((offer, idx) => (
-          <OfferCard key={offer._id} offer={offer}/>
-        ))}
-      </Container>
-      </>
+        <>
+          <h1 className={styles.mainHeading}>Offers</h1>
+          <Container id={styles.offer__container}>
+            {offers?.map((offer, idx) => (
+              <OfferCard key={offer._id} offer={offer} />
+            ))}
+          </Container>
+        </>
       )}
       <DailyNeeds />
-    </>  
+    </>
   );
 };
 

@@ -45,7 +45,7 @@ const ResetPassword = () => {
   }, [dispatch, error, alert, message]);
 
   useEffect(() => {
-    document.title = 'Forgot Password | Basket Bistro';
+    document.title = 'Forgot Password | Mono Basket';
   }, []);
 
   return (

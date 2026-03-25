@@ -9,7 +9,7 @@ import styles from './TermsAndCondition.module.css';
 
 const TermsAndCondition = () => {
   useEffect(() => {
-    document.title = 'Terms And Condition| Basket Bistro';
+    document.title = 'Terms And Condition| Mono Basket';
     window.scrollTo({
       top: 0,
     });
@@ -18,12 +18,12 @@ const TermsAndCondition = () => {
   return (
     <>
       {/* <TopNavigation /> */}
-      <Banner />
+      {/* <Banner /> */}
       <Container id={styles.terms__condition}>
-        <h3> Welcome to Basket Bistro!</h3>
+        <h3> Welcome to Mono Basket!</h3>
         <p>
-          These terms and conditions outline the rules and regulations for the use of BasketBistro Website, located at https://BasketBistro.com/. By
-          accessing this website we assume you accept these terms and conditions. Do not continue to use BasketBistro if you do not agree to take all of
+          These terms and conditions outline the rules and regulations for the use of Mono Basket Website, located at https://MonoBasket.com/. By
+          accessing this website we assume you accept these terms and conditions. Do not continue to use Mono Basket if you do not agree to take all of
           the terms and conditions stated on this page.
         </p>
 
@@ -39,7 +39,7 @@ const TermsAndCondition = () => {
 
         <h3>Cookies</h3>
         <p>
-          We employ the use of cookies. By accessing BasketBistro, you agreed to use cookies in agreement with the BasketBistro's Privacy Policy. Most
+          We employ the use of cookies. By accessing Mono Basket, you agreed to use cookies in agreement with the Mono Basket's Privacy Policy. Most
           interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the
           functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use
           cookies.
@@ -47,8 +47,8 @@ const TermsAndCondition = () => {
 
         <h3>License</h3>
         <p>
-          Unless otherwise stated, BasketBistro and/or its licensors own the intellectual property rights for all material on BasketBistro. All
-          intellectual property rights are reserved. You may access this from BasketBistro for your own personal use subjected to restrictions set in
+          Unless otherwise stated, Mono Basket and/or its licensors own the intellectual property rights for all material on Mono Basket. All
+          intellectual property rights are reserved. You may access this from Mono Basket for your own personal use subjected to restrictions set in
           these terms and conditions.This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the Terms
           And Conditions Generator.
         </p>

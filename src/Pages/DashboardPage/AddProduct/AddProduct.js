@@ -67,6 +67,11 @@ const AddProduct = () => {
       name: 'Pharmacy',
       linkName: 'Pharmacy',
     },
+   {
+      id: 8,
+      name: 'Confectionary',
+      linkName: 'Confectionary',
+    },
   ];
 
   const handleImageUpload = (e) => {
@@ -156,6 +161,11 @@ const AddProduct = () => {
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
 
+    if (productImg === headerLogo || !productImg) {
+      toast.error("Please upload image");
+      return;
+    }
+
     const myForm = new FormData();
 
     myForm.set("name", name);
@@ -228,7 +238,7 @@ const AddProduct = () => {
         </span>
 
         <span className={styles.inputs}>
-          <input type='number' placeholder='Product Price' id='pdPrice' onBlur={handelBlur} autoComplete='off' name='price' value={rate} onChange={(e) => setRate(e.target.value)} />
+          <input type='text' inputMode='numeric' placeholder='Product Price' id='pdPrice' onBlur={handelBlur} autoComplete='off' name='price' value={rate === 0 ? "" : rate} onChange={(e) => setRate(e.target.value.replace(/[^0-9.]/g, ''))} />
           <label htmlFor='pdPrice'>
             <img src={price} alt='price' />
           </label>
