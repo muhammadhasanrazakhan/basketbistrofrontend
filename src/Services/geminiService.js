@@ -1,13 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // API key environment variable se access karein
-const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API);
 
 // Model ko yahan configure karein taake baar baar na karna paray
 // Hum sab se tez model aur JSON response format istemal kar rahe hain
 const model = genAI.getGenerativeModel({
   model: "gemini-3-flash-preview", // Sab se tez aur latest model
-  generationConfig: { 
+  generationConfig: {
     responseMimeType: "application/json" // Tez response ke liye JSON format
   },
 });
@@ -50,9 +50,9 @@ class ComparisonService {
       });
       const response = result.response;
       const text = response.text();
-      
+
       const parsedJson = JSON.parse(text);
-      
+
       // Sort prices and find the cheapest
       const sortedPrices = [...parsedJson.prices].sort((a, b) => a.price - b.price);
       parsedJson.prices = sortedPrices;
