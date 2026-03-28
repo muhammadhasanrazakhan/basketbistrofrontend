@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,11 +26,13 @@ const Banner = () => {
       });
       dispatch(clearErrors());
     }
-
-    if (offers?.length === 0) {
-    dispatch(getAllOffers());
-    }
   }, [dispatch, error]);
+
+  useEffect(() => {
+    // if (offers?.length === 0) {
+    dispatch(getAllOffers());
+    // }
+  }, [dispatch]);
 
   return (
     <Container id='banner' className={styles.banner}>
@@ -68,44 +70,44 @@ const Banner = () => {
         <Col lg={6} md={12} className={styles.banner__side}>
           {/* <img src={banner1} alt='banner1' /> */}
           {offers?.[0] ? (
-          <div className={styles.offerBox} onClick={() => navigate('/offer')}>
-            <img src={offer_banner} alt='banner1' />
-            <div className={styles.offerContent}>
-              <h4>{offers?.[0].title}</h4>
-              <p className={styles.statusBoxText}>
-                Explore
-              </p>
-              <p className={styles.offerDiscription}>{offers?.[0].description}</p>
+            <div className={styles.offerBox} onClick={() => navigate('/offer')}>
+              <img src={offer_banner} alt='banner1' />
+              <div className={styles.offerContent}>
+                <h4>{offers?.[0].title}</h4>
+                <p className={styles.statusBoxText}>
+                  Explore
+                </p>
+                <p className={styles.offerDiscription}>{offers?.[0].description}</p>
+              </div>
+              <div className={styles.separator}></div>
+              <div className={styles.buttonDiv}>
+                <button className={styles.offerButton} onClick={() => navigate('/offer')}>Explore</button>
+                <p className={styles.instruction}>Press the button to get more info</p>
+              </div>
             </div>
-            <div className={styles.separator}></div>
-            <div className={styles.buttonDiv}>
-              <button className={styles.offerButton} onClick={() => navigate('/offer')}>Explore</button>
-              <p className={styles.instruction}>Press the button to get more info</p>
-            </div>
-          </div>
           ) : (
-            <img src={banner1} alt='banner1' className={styles.banner__img}  onClick={() => navigate('/categories/FruitsandVegetable')}/>
+            <img src={banner1} alt='banner1' className={styles.banner__img} onClick={() => navigate('/categories/FruitsandVegetable')} />
           )}
           <div className='mt-3'>
-          {offers?.[1] ? (          
-          <div className={styles.offerBox} onClick={() => navigate('/offer')}>
-            <img src={offer_banner} alt='banner1' />
-            <div className={styles.offerContent}>
-              <h4>{offers?.[1].title}</h4>
-              <p className={styles.statusBoxText}>Explore</p>
-              <p className={styles.offerDiscription}>{offers?.[1].description}</p>
-            </div>
-            <div className={styles.separator}></div>
-            <div className={styles.buttonDiv}>
-              <button className={styles.offerButton} onClick={() => navigate('/offer')}>Explore</button>
-              <p className={styles.instruction}>Press the button to get more info</p>
-            </div>
-          </div>
-          ) : (
-            // <div className={styles.offerBox}>
-              <img src={banner1} alt='banner1' className={styles.banner__img} onClick={() => navigate('/categories/FruitsandVegetable')}/>
-            // </div>
-          )}
+            {offers?.[1] ? (
+              <div className={styles.offerBox} onClick={() => navigate('/offer')}>
+                <img src={offer_banner} alt='banner1' />
+                <div className={styles.offerContent}>
+                  <h4>{offers?.[1].title}</h4>
+                  <p className={styles.statusBoxText}>Explore</p>
+                  <p className={styles.offerDiscription}>{offers?.[1].description}</p>
+                </div>
+                <div className={styles.separator}></div>
+                <div className={styles.buttonDiv}>
+                  <button className={styles.offerButton} onClick={() => navigate('/offer')}>Explore</button>
+                  <p className={styles.instruction}>Press the button to get more info</p>
+                </div>
+              </div>
+            ) : (
+              // <div className={styles.offerBox}>
+              <img src={banner1} alt='banner1' className={styles.banner__img} onClick={() => navigate('/categories/FruitsandVegetable')} />
+              // </div>
+            )}
 
           </div>
         </Col>

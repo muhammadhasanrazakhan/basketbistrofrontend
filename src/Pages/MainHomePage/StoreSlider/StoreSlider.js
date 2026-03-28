@@ -16,10 +16,13 @@ const StoreSlider = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
+  }, [dispatch, error]);
+
+  useEffect(() => {
     if (!stores || stores.length === 0) {
       dispatch(getStores());
     }
-  }, [dispatch, error]);
+  }, [dispatch]);
 
   return (
     <Container className={styles.sliderContainer}>

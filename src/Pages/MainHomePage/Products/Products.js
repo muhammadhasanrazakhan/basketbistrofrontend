@@ -28,6 +28,9 @@ const Products = () => {
       });
       dispatch(clearErrors());
     }
+  }, [dispatch, error]);
+
+  useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
 
