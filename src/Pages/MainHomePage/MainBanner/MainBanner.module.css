@@ -4,14 +4,23 @@
   overflow: hidden;
 }
 
+.carousel,
+:global(.carousel-inner),
+:global(.carousel-item) {
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
 .banner .carousel__item {
   position: relative;
+  border-radius: 10px !important;
 }
 
 .banner .carousel__item img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  border-radius: 10px !important;
 }
 
 .banner .carousel__item .overlay {
@@ -20,7 +29,7 @@
   left: 50px;
   transform: translateY(-50%);
   width: 60%;
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
 
 .banner .carousel__item .overlay h3 {
@@ -49,6 +58,7 @@
 .banner__img {
   width: 100%;
   height: 140px;
+  border-radius: 10px;
 }
 
 /* .banner__side {

@@ -24,6 +24,7 @@ import MyOrders from './Pages/DashboardPage/MyOrders/MyOrders';
 import Profile from './Pages/DashboardPage/Profile/Profile';
 import TopNavigation from './Pages/SharedComponents/TopNavigation/TopNavigation';
 import Footer from './Pages/SharedComponents/Footer/Footer';
+import ChatWidget from './Pages/SharedComponents/ChatWidget/ChatWidget';
 import PreLoader from './Pages/SharedComponents/PreLoader/PreLoader';
 import ScrollToTop from './Pages/SharedComponents/ScrollToTop/ScrollToTop';
 import Home from './Pages/HomePage/Home/Home';
@@ -42,7 +43,7 @@ import CheckOutPage from './Pages/CheckOutPage/CheckOutPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import PrivacyPolicy from './Pages/PrivacyPolicyPage/PrivacyPolicy';
 import Offer from './Pages/OfferPage/Offer';
-import ResetPassword from'./Pages/AuthPage/ResetPassword/ResetPassword';
+import ResetPassword from './Pages/AuthPage/ResetPassword/ResetPassword';
 import NewPassword from './Pages/AuthPage/NewPassword/NewPassword';
 import TermsAndCondition from './Pages/TermsAndConditionPage/TermsAndCondition';
 import AllStores from './Pages/AllStores/AllStores';
@@ -69,7 +70,7 @@ import { loadUser } from "./actions/userAction";
 // const TermsAndCondition = lazy(() => import('./Pages/TermsAndConditionPage/TermsAndCondition'));
 
 function App() {
-  
+
   const { isAuthenticated } = useSelector((state) => state.user);
 
   // if (!isAuthenticated) {
@@ -80,75 +81,75 @@ function App() {
   useLayoutEffect(() => {
     store.dispatch(loadUser());
   }, []);
-  
+
   return (
     <BrowserRouter>
       <TopNavigation />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Toaster />
       {/* <Suspense fallback={<PreLoader />}> */}
-        <Routes>
-          <Route exact path='/' element={<MainHome />} />
-          <Route exact path='/home/:storeID' element={<Home />} />
-          <Route exact path='/main-home' element={<MainHome />} />
-          <Route exact path='/all-stores' element={<AllStores />} />
-          <Route exact path='/compare' element={<Compare />} />
-          <Route exact path='/map' element={<Map />} />
-          <Route exact path='/about-us' element={<AboutUs />} />
-          <Route exact path='/contact-us' element={<ContactUs />} />
-          <Route exact path='/privacy-policy' element={<PrivacyPolicy />} />
-          <Route exact path='/terms-and-conditions' element={<TermsAndCondition />} />
-          <Route exact path='/offer' element={<Offer />} />
-          <Route exact path='/login' element={<Loginuser />} />
-          <Route exact path='/register' element={<Register />} />
-          <Route exact path='/reset-password' element={<ResetPassword />} />
-          <Route exact path="/password/reset/:token" element={<NewPassword />} />
-          <Route
-           exact path='/create-store' 
-           element={
-             <RequiredAuth>   
-               <CreateStore />
-             </RequiredAuth>
-           } 
-          />
+      <Routes>
+        <Route exact path='/' element={<MainHome />} />
+        <Route exact path='/home/:storeID' element={<Home />} />
+        <Route exact path='/main-home' element={<MainHome />} />
+        <Route exact path='/all-stores' element={<AllStores />} />
+        <Route exact path='/compare' element={<Compare />} />
+        <Route exact path='/map' element={<Map />} />
+        <Route exact path='/about-us' element={<AboutUs />} />
+        <Route exact path='/contact-us' element={<ContactUs />} />
+        <Route exact path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route exact path='/terms-and-conditions' element={<TermsAndCondition />} />
+        <Route exact path='/offer' element={<Offer />} />
+        <Route exact path='/login' element={<Loginuser />} />
+        <Route exact path='/register' element={<Register />} />
+        <Route exact path='/reset-password' element={<ResetPassword />} />
+        <Route exact path="/password/reset/:token" element={<NewPassword />} />
+        <Route
+          exact path='/create-store'
+          element={
+            <RequiredAuth>
+              <CreateStore />
+            </RequiredAuth>
+          }
+        />
 
+        <Route
+          exact path='/dashboard'
+          element={
+            <RequiredAuth>
+              <Dashboard />
+            </RequiredAuth>
+          }
+        >
+          <Route exact path='/dashboard' element={<Profile />} />
+          <Route exact path='/dashboard/profile' element={<Profile />} />
+          <Route exact path='/dashboard/my-orders' element={<MyOrders />} />
+          {/* <Route exact path='/dashboard/review' element={<AddReview />} /> */}
           <Route
-            exact path='/dashboard'
+            exact path='/dashboard/add-product'
             element={
-              <RequiredAuth>
-                <Dashboard />
-              </RequiredAuth>
+              <IsAdmin>
+                <AddProduct />
+              </IsAdmin>
             }
-          >
-            <Route exact path='/dashboard' element={<Profile />} />
-            <Route exact path='/dashboard/profile' element={<Profile />} />
-            <Route exact path='/dashboard/my-orders' element={<MyOrders />} />
-            {/* <Route exact path='/dashboard/review' element={<AddReview />} /> */}
-            <Route
-              exact path='/dashboard/add-product'
-              element={
-                <IsAdmin>
-                  <AddProduct />
-                </IsAdmin>
-              }
-            />
-            <Route
-              exact path='/dashboard/create-offer'
-              element={
-                <IsAdmin>
-                  <CreateOffer />
-                </IsAdmin>
-              }
-            />
-            <Route
-              exact path='/dashboard/manage-orders'
-              element={
-                <IsAdmin>
-                  <ManageOrders />
-                </IsAdmin>
-              }
-            />
-            {/* <Route
+          />
+          <Route
+            exact path='/dashboard/create-offer'
+            element={
+              <IsAdmin>
+                <CreateOffer />
+              </IsAdmin>
+            }
+          />
+          <Route
+            exact path='/dashboard/manage-orders'
+            element={
+              <IsAdmin>
+                <ManageOrders />
+              </IsAdmin>
+            }
+          />
+          {/* <Route
               exact path='/dashboard/make-admin'
               element={
                 <IsAdmin>
@@ -156,15 +157,15 @@ function App() {
                 </IsAdmin>
               }
             /> */}
-            <Route
-              exact path='/dashboard/manage-products'
-              element={
-                <IsAdmin>
-                  <ManageProducts />
-                </IsAdmin>
-              }
-            />
-            {/* <Route
+          <Route
+            exact path='/dashboard/manage-products'
+            element={
+              <IsAdmin>
+                <ManageProducts />
+              </IsAdmin>
+            }
+          />
+          {/* <Route
               exact path='/dashboard/manage-users'
               element={
                 <IsAdmin>
@@ -172,70 +173,71 @@ function App() {
                 </IsAdmin>
               }
             /> */}
-            <Route
-              exact path='/dashboard/manage-offers'
-              element={
-                <IsAdmin>
-                  <ManageOffers />
-                </IsAdmin>
-              }
-            />
-            <Route
-              exact path='/dashboard/update-product/:id'
-              element={
-                <IsAdmin>
-                  <UpdateProduct />
-                </IsAdmin>
-              }
-            />
-            <Route
-              exact path='/dashboard/update-offer/:id'
-              element={
-                <IsAdmin>
-                  <UpdateOffer />
-                </IsAdmin>
-              }
-            />
-          </Route>
-          <Route 
-            exact path='/addcustomlist' 
-            element={
-              <RequiredAuth>
-                <CustomList />
-              </RequiredAuth>
-            }
-          />
-          <Route 
-            exact path='/orderdetails/:id' 
-            element={
-              <RequiredAuth>
-                <OrderDetails />
-              </RequiredAuth>
-            }
-          />
-          <Route exact path='/categories' element={<Categories />}>
-            <Route exact path='/categories/:searchString' element={<SingleCategory />} />
-          </Route>
           <Route
-            exact path='/checkout'
+            exact path='/dashboard/manage-offers'
             element={
-              <RequiredAuth>
-                <CheckOutPage />
-              </RequiredAuth>
+              <IsAdmin>
+                <ManageOffers />
+              </IsAdmin>
             }
           />
           <Route
-            exact path='/change-password'
+            exact path='/dashboard/update-product/:id'
             element={
-              <RequiredAuth>
-                <ChangePassword />
-              </RequiredAuth>
+              <IsAdmin>
+                <UpdateProduct />
+              </IsAdmin>
             }
           />
-          <Route exact path='*' element={<NotFoundPage />} />
-        </Routes>
+          <Route
+            exact path='/dashboard/update-offer/:id'
+            element={
+              <IsAdmin>
+                <UpdateOffer />
+              </IsAdmin>
+            }
+          />
+        </Route>
+        <Route
+          exact path='/addcustomlist'
+          element={
+            <RequiredAuth>
+              <CustomList />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          exact path='/orderdetails/:id'
+          element={
+            <RequiredAuth>
+              <OrderDetails />
+            </RequiredAuth>
+          }
+        />
+        <Route exact path='/categories' element={<Categories />}>
+          <Route exact path='/categories/:searchString' element={<SingleCategory />} />
+        </Route>
+        <Route
+          exact path='/checkout'
+          element={
+            <RequiredAuth>
+              <CheckOutPage />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          exact path='/change-password'
+          element={
+            <RequiredAuth>
+              <ChangePassword />
+            </RequiredAuth>
+          }
+        />
+        <Route exact path='*' element={<NotFoundPage />} />
+      </Routes>
       {/* </Suspense> */}
       <Footer />
+      <ChatWidget />
     </BrowserRouter>
   );
 }
