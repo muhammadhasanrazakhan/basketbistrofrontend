@@ -38,7 +38,7 @@ const MainBanner = () => {
     <Container id='banner' className={styles.banner}>
       <Row className='mt-5 mt-md-0'>
         <Col lg={6} md={12}>
-          <Carousel pause='false'>
+          <Carousel pause='false' className={styles.mainCarousel}>
             <Carousel.Item className={styles.carousel__item}>
               <img className='img-fluid w-100' src={first} alt='First' />
               <div className={styles.overlay}>

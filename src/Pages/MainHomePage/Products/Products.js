@@ -40,10 +40,13 @@ const Products = () => {
         <h3>Popular Products for Daily Shopping</h3>
         <p>See all our popular products in this week. You can choose your daily needs products from this list and get some special offer with free shipping.</p>
         <div className={styles.products__container}>
-          {products?.slice(0, 20)?.map((product) => (
+          {/* {products?.slice(0, 20)?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))} */}
+          {products?.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
-          
+
           <div className={styles.add__list__box} onClick={() => navigate('/addcustomlist')}>
             <span className={styles.card__img}>
               <FontAwesomeIcon icon={faPlus} />
@@ -51,8 +54,8 @@ const Products = () => {
             <div className={styles.add__list__content}>
               <h4>Add Your Custom List</h4>
             </div>
-          </div>  
-        </div>              
+          </div>
+        </div>
 
         {/* {loading && <LoadingSpinner />}
         <span className={styles.category__button}>

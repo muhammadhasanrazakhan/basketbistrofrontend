@@ -20,7 +20,7 @@ const Cart = ({ pd }) => {
       return;
     }
     dispatch(addItemsToCart(id, pd.name, pd.price, pd.image, pd.stock, newQty));
-    
+
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -41,9 +41,9 @@ const Cart = ({ pd }) => {
         <img src={pd.image} alt={pd.name} />
         <span className='ms-3'>
           <h6>{pd.name}</h6>
-          <small>Rs. {pd.price}</small>
+          <small>Rs. {totalPrice ? totalPrice : pd.price}</small>
           {/* <h5>{pd.price}</h5> */}
-          <h5>{totalPrice ? totalPrice : pd.price}</h5>
+          {/* <h5>{totalPrice ? totalPrice : pd.price}</h5> */}
         </span>
       </div>
       <div className={styles.counter}>

@@ -37,12 +37,14 @@
   color: #1f2937;
   font-size: 30px;
   line-height: 36px;
+  width: 200px;
 }
 
 .banner .carousel__item .overlay p {
   color: #4b5563;
   font-size: 16px;
   line-height: 24px;
+  width: 250px;
 }
 
 .banner .carousel__item .overlay button {
@@ -58,6 +60,7 @@
 .banner__img {
   width: 100%;
   height: 140px;
+  border-radius: 10px;
   border-radius: 10px;
 }
 
@@ -126,6 +129,7 @@
   color: #4b5563;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   /* Limit to two lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -277,6 +281,7 @@
   .offerDiscription {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     /* Limit to two lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -291,10 +296,14 @@
     margin-top: 0px;
   }
 
+  .mainCarousel {
+    height: 190px;
+  }
+
   .banner .carousel__item img {
     width: 100%;
     height: 190px;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .banner .carousel__item .overlay {
@@ -348,7 +357,7 @@
   .banner__img {
     /* display: none; */
     height: 80px;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .offerBox {

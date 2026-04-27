@@ -24,8 +24,8 @@
   overflow-x: auto !important;
   gap: 20px;
   padding: 10px 5px 20px 5px;
-  scrollbar-width: thin;
-  scrollbar-color: #d1d5db #f3f4f6;
+  scrollbar-width: none;
+  /* scrollbar-color: #d1d5db #f3f4f6; */
 }
 
 .horizontalScroll::-webkit-scrollbar {
@@ -43,7 +43,7 @@
   flex: 0 0 280px;
   border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0.2,0.2,0.2,0.08);
+  box-shadow: 0 4px 15px rgba(0.2, 0.2, 0.2, 0.08);
   transition: transform 0.3s ease;
   cursor: pointer;
   overflow: hidden;
@@ -52,7 +52,7 @@
 
 .storeCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .imageBox {
@@ -102,10 +102,10 @@
   font-size: 14px;
   color: #4b5563;
   line-height: 1.4;
-  white-space: nowrap;   
-  overflow: hidden;   
-  text-overflow: ellipsis;  
-  display: block;           
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
   width: 100%;
 }
 
@@ -114,6 +114,7 @@
   .storeCard {
     min-width: 240px;
   }
+
   .heading {
     font-size: 22px;
   }
@@ -121,7 +122,8 @@
 
 @media (max-width: 500px) {
   .storeCard {
-    min-width: 80%; /* Show one full card and a peek of the next */
+    min-width: 80%;
+    /* Show one full card and a peek of the next */
   }
 }
 

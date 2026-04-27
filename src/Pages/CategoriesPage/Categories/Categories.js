@@ -182,6 +182,20 @@ const Categories = () => {
   //   }
   // }
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Only redirect if this is a true browser reload (refresh icon)
+    // and it occurred specifically on this route during initial app load.
+    // performance.now() is very low only during the initial boot of the app.
+    const navEntries = performance.getEntriesByType('navigation');
+    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+
+    if (isReload && performance.now() < 2000) {
+      navigate('/main-home');
+    }
+  }, [navigate]);
+
   useEffect(() => {
     document.title = 'All Categories | Mono Basket';
     window.scrollTo({
@@ -192,7 +206,7 @@ const Categories = () => {
   return (
     <>
       {/* <TopNavigation /> */}
-      <CartTracker />
+      {/* <CartTracker /> */}
       <section id={styles.categories}>
         <Container>
           <Row>
@@ -201,9 +215,9 @@ const Categories = () => {
               <h3 className='mb-4'>Categories</h3>
               <aside id={styles.aside}>
                 {sidebarCategories.map((category, idx) => (
-                  <NavLink 
-                    key={idx} 
-                    to={`/categories/${category.linkName}${storeID ? `?store=${storeID}` : ''}`} 
+                  <NavLink
+                    key={idx}
+                    to={`/categories/${category.linkName}${storeID ? `?store=${storeID}` : ''}`}
                     className={(navInfo) => (navInfo.isActive ? styles.active : '')}
                   >
                     <span>
